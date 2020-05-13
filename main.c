@@ -1,11 +1,20 @@
 #include <stdio.h>
-//ERRORES:
-//1)Falta el .h de la funcion
-//2)No es una funcion recursiva, porque se esta llamando mal, deberia llamarse como suma_digitos y no como digitos.
-//3)Le falta el caso base , para que tenga sentido
-//LA FUNCION SUMAS LOS DIGITOS DEL NUMERO QUE LE PASEN.
+int suma_digitos(int n);
+int main(void)
+{
+	int n=4325;					//numero aleatorio, queda disposicion del usuario
+	int resultado=suma_digitos(n);		//se invoca la funcion recursiva
+	printf("%d\n",resultado);
+	return 0;
+}
+
+
 int suma_digitos(int n)
 {
-	return((n%10)+digitos(n/10));
+	if( (n/10)<=9)						//caso base; cuando el resultado de la division es de un solo digito
+	{
+		return((n%10)+(n/10));			//se devuelve la suma de los dos ultimos digitos
+	}
+	return((n%10)+suma_digitos(n/10));		//parte recursiva
 	
 }
